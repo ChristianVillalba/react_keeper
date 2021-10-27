@@ -29,7 +29,16 @@ function CreateArea(props) {
           placeholder="Take a note..."
           rows="3"
         />
-        <button>Add</button>
+        <button
+          onClick={() => {
+            props.onAddTitle(noteTitle);
+            setNoteTitle("");
+            props.onAddContent(noteContent);
+            setNoteContent("");
+          }}
+        >
+          Add
+        </button>
       </form>
     </div>
   );
