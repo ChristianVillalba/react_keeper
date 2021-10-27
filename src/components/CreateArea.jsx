@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
-function CreateArea() {
+function CreateArea(props) {
+  const [noteTitle, setNoteTitle] = useState("");
+  const [noteContent, setNoteContent] = useState("");
+
+  function handleTitleChange(event) {
+    const newValue = event.target.value;
+    setNoteTitle(newValue);
+  }
+  function handleContentChange(event) {
+    const newValue = event.target.value;
+    setNoteContent(newValue);
+  }
+
   return (
     <div>
       <form>
-        <input name="title" placeholder="Title" />
+        <input
+          onChange={handleTitleChange}
+          value={noteTitle}
+          name="title"
+          placeholder="Title"
+        />
         <textarea name="content" placeholder="Take a note..." rows="3" />
         <button>Add</button>
       </form>
