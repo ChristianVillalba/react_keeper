@@ -5,6 +5,15 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function App() {
+  const [myNotes, setMyNotes] = useState([]);
+
+  // Edit
+  function addItem(inputText) {
+    setItems((prevItems) => {
+      return [...prevItems, inputText];
+    });
+  }
+
   return (
     <div>
       <Header />
