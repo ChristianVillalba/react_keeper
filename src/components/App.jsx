@@ -8,17 +8,25 @@ function App() {
   const [myNotes, setMyNotes] = useState([]);
 
   // Edit
-  function addItem(inputText) {
-    setItems((prevItems) => {
-      return [...prevItems, inputText];
+  function addNoteTitle(noteTitle) {
+    setMyNotes((prevTitles) => {
+      return [...prevTitles, noteTitle];
+    });
+  }
+  function addNoteContent(noteContent) {
+    setMyNotes((prevContents) => {
+      return [...prevContents, noteContent];
     });
   }
 
   return (
     <div>
       <Header />
-      <CreateArea />
-      <Note key={index} id={index} title={noteTitle} content={noteContent} />
+      <CreateArea onAddTitle={addNoteTitle} onAddContent={addNoteContent} />
+      {myNotes.map((noteTitle, index) => (
+        <Note key={index} id={index} title={noteTitle} content={noteContent} />
+      ))}
+
       <Footer />
     </div>
   );
