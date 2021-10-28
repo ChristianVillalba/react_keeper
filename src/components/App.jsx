@@ -9,13 +9,13 @@ function App() {
 
   function addNote(newNote) {
     setMyNotes((prevNotes) => {
-      [...prevNotes, newNote];
+      return [...prevNotes, newNote];
     });
   }
 
   function deleteNote(id) {
-    setItems((prevItems) => {
-      return prevItems.filter((item, index) => {
+    setMyNotes((prevNotes) => {
+      return prevNotes.filter((noteItem, index) => {
         return index !== id;
       });
     });
@@ -25,7 +25,7 @@ function App() {
     <div>
       <Header />
       <CreateArea onAdd={addNote} />
-      {myNotes.map((noteItem) => {
+      {myNotes.map((noteItem, index) => {
         return (
           <Note
             key={index}

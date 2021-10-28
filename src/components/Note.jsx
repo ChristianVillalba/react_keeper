@@ -1,7 +1,9 @@
 import React from "react";
 
 function Note(props) {
-  function handleClick() {}
+  function handleClick() {
+    props.onDelete(props.id);
+  }
 
   return (
     <div className="note">
