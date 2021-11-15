@@ -93,5 +93,29 @@ The next step is to update `value`(s) when they get change.
 Inside the **input** and the **textarea** we added a `onChange`.      
 And inside both of these **onChange**, we call a function `handleChange`. 
 
+The function `handleChange` is going to receive an `event` when it gets triggered       
+We're going to destructure the event so that we get hold of the **event.target.name** and **event.target.value**           
+So we can use this `name` and `value` as separate constants:
+```javascript
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setNote((prevNote) => {
+      return { ...prevNote, [name]: value };
+    });
+  }
+```
+Then we added `setNote` to be able to receive the previous note `prevNote` and      
+in addition, I'm going to use that to add to the existing note.      
+So `setNote` will return a new object with the previous note `...preNote` (spread operator)     
+and in addition I'm going to add the new `name` and `value`:            
+`{ ...prevNote, [name]: value }`      
+remember that `[name]` simply 
+turns this `name key` from just the string name 
+for the key to the actual `value` of this `name` constant `const{name...` above .
+`...preNote` (spread operator) will spread all of the **key-value** pairs that is       
+currently in existence in our `note` (inside funct: CreateArea, title: and content:)       
+
+
+
 ### Implement functionality to delete Notes    
 
