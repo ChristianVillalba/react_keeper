@@ -115,7 +115,49 @@ for the key to the actual `value` of this `name` constant `const{name...` above 
 `...preNote` (spread operator) will spread all of the **key-value** pairs that is       
 currently in existence in our `note` (inside funct: CreateArea, title: and content:)       
 
+### Pass the newly created note back to the app.
+
+We know that we've got this `note` saved in the constant and      
+we know that we have a button called **add** which is supposed to trigger this adding of the note functionality.
+
+We add a `onClick` to the Add Button and try to get this `note` that's been created in ` fucntion handleClick`       
+passed back to the App.jsx
+```javascript
+ <button onClick={submitNote}>Add</button>
+```
+When this button gets clicked, we're going to pass it a function that should be triggered: `submitNote`
+passed back to the App.jsx
+```javascript
+  function submitNote(event) {
+    props.onAdd(note);
+    setNote({ title: "", content: "" });
+    event.preventDefault();
+  }
+```
+**Default Behaviour:**     
+Remember: whenever you click on a button inside a form, the default behavior is to refresh the page.          
+`event.preventDefault();` prevents this.     
+
+The next thing to do is to trigger a function that can pass the `note` (CreateArea.jsx) back over to the App.jsx.      
+And to do that we have to pass in a function as a prop (App.jsx)
+```javascript
+  function addNote(newNote) {
+    setMyNotes((prevNotes) => {
+      return [...prevNotes, newNote];
+    });
+  }
+```
+This `addNote` is going to receive a note object `newNote` and it's going to do something with that note object.    
+
+That `addNote` is going to be added as a value to one of the props for the `CreateArea` Component.    
+We are going to call it `onAdd` (or any other name) and I'm going to set it equal `addNote` .     
+
+In CreateArea.jsx the `function CreateArea(props)` hold the props so it can trigger `addNote`.     
+In the `fucntion submitNote` we can use `props.onAdd()`.     
+And calling this `onAdd` from the props is going to be equivalent to calling the `addNote` from the App.jsx.        
+In order to be able to add the `note` we have to pass it back as an input.       
+So in the onAdd we're going to pass over the current created note:  `props.onAdd(note)`
 
 
-### Implement functionality to delete Notes    
+## Implement functionality to delete Notes    
 
