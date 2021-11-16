@@ -158,6 +158,15 @@ And calling this `onAdd` from the props is going to be equivalent to calling the
 In order to be able to add the `note` we have to pass it back as an input.       
 So in the onAdd we're going to pass over the current created note:  `props.onAdd(note)`
 
+### Add this new note to an array.
+
+In App.jsx, we create a constant a called `notes` to represent the plural nature of our Array of notes.       
+And a Function called `setNotes` which is going to help me update this `notes` Array.
+We have to use state and import **state** and the initial value for my `notes` is just going to be an empty array `[]`.
+```javascript
+const [myNotes, setMyNotes] = useState([]);
+```
+
 
 ## Implement functionality to delete Notes    
 
